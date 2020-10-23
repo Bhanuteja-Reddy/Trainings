@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator</title>
+</head>
+
+<body>
+    <form>
+        <label>Enter Input 1</label>
+        <input type="number" name="input1" id="input1" value="0">
+        <label>Enter Input 2</label>
+        <input type="number" name="input2" id="input2" value="0">
+        <label>Select Operations To Be Performed</label>
+        <select name="operations" id="operations">
+            <option value="+">Sum(+)</option>
+            <option value="-">Subtract(-)</option>
+            <option value="%">Module(%)</option>
+            <option value="/">Divisio(/)</option>
+            <option value="^">Power(^)</option>
+            <option value="nthRoot">nthRoot</option>
+        </select>
+        <label>click here to get Result</label>
+        <input type="button" value="getOutPut" onclick="getOutPut()">
+        </br>
+        <label>OutPut</label>
+        <input type="number" name="outPut" id="outPut">
+    </form>
+    <script>
+        function power(baseNumber, powNuber) {
+            if (powNuber === 0) return 1;
+            if (powNuber === -1) return 1 / baseNumber;
+            if (powNuber === 1) return baseNumber;
+            return Math.exp(powNuber * Math.log(baseNumber))
+        }
+        function getNthroot(baseNumber, rootNumber) {
+            return power(baseNumber, (1 / rootNumber));
+        }
+        function getOutPut() {
+            var input1 = Number(document.getElementById('input1').value);
+            const input2 = Number(document.getElementById('input2').value);
+            const selectedOperation = document.getElementById('operations').value;
+            switch (selectedOperation) {
+                case '+':
+                    document.getElementById('outPut').value = input1 + input2;
+                    break;
+                case '-':
+                    document.getElementById('outPut').value = input1 - input2;
+                    break;
+                case '%':
+                    document.getElementById('outPut').value = input1 % input2;
+                    break;
+                case '/':
+                    document.getElementById('outPut').value = input1 / input2;
+                    break;
+                case '^':
+                    const powerOutPut = power(input1, input2)
+                    document.getElementById('outPut').value = powerOutPut;
+                    break;
+                case 'nthRoot':
+                    const nthRootOutPut = getNthroot(input1, input2);
+                    document.getElementById('outPut').value = nthRootOutPut;
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+<!-- Calculator Application
+
+---input output
+
+--inputs either number or symbol
+
+--operations
+     1. BODMAS rule
+     2. 4*3+1(5)%6
+    --deciding point ----symbol
+    sum --       pattern --- number Symbol number     ---- starts withs ends with number 
+    subtarction--  pattern --- number Symbol number     ---- starts withs ends with number 
+    multiplication----- number Symbol number     ----starts withs ends with number 
+    division  --- number Symbol number     ---- starts withs ends with number 
+    modulor --- number Symbol number     ---- starts withs ends with number 
+    power --- number Symbol number     ---- starts withs ends with number 
+    SquareRoot --- number Symbol number     ---- starts withs ends with number 
+
+---- output number float double;
+
+--- 
+
+step:1
+ getInput from user
+       ---validate the given data by user
+       --if it is in given pattern goto step2 else return false and use defined msg
+step:2
+ Decide the Operations to performed and any algorithem or pattern is ther to resolve the issue
+
+step3:build the expression to be evaluted
+
+step4 :decide the express resolving method
+
+step4:
+    return the result -->
+
+
+
+
+
+</html>
