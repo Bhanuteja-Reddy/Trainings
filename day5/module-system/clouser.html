@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clouser</title>
+</head>
+<body>
+    
+    
+</body>
+<script>
+    function outerFunction () {
+        debugger
+  const outer = `I'm the outer function!`
+
+  function innerFunction() {
+    const inner = `I'm the inner function!`
+    console.log(outer) // I'm the outer function!
+  }
+
+  console.log(inner) // Error, inner is not defined
+}
+</script>
+</html>
