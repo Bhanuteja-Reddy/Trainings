@@ -22,4 +22,8 @@ router.post('/create', function(req, res, next) {
  res.redirect('/users/form');  // redirect to user form page after inserting the data
 
 }); 
+
+router.post()
+
+
 module.exports = router;
