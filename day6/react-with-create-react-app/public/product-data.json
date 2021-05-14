@@ -1,0 +1,34 @@
+[
+    {
+        "productId":1,
+        "productMasterCategory":"Electronics",
+        "productSubCategory":"Laptops",
+        "productName":"Dell-Inspiron 5000 series",
+        "price":60000,
+        "discount":15
+    },
+    {
+        "productId":2,
+        "productMasterCategory":"Electronics",
+        "productSubCategory":"Laptops",
+        "productName":"ASUS",
+        "price":70000,
+        "discount":15
+    },
+    {
+        "productId":3,
+        "productMasterCategory":"Electronics",
+        "productSubCategory":"Laptops",
+        "productName":"Dell-Vostro series",
+        "price":45000,
+        "discount":15
+    },
+    {
+        "productId":4,
+        "productMasterCategory":"Electronics",
+        "productSubCategory":"Laptops",
+        "productName":"Acer series",
+        "price":60000,
+        "discount":15
+    }
+]

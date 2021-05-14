@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {RenderWatchDisplay} from './timer-display'
 import './timer.css'
 
 const Timer = () => {
@@ -19,14 +20,18 @@ const Timer = () => {
     return () => clearInterval(interval);
   }, [timerOn]);
 
+  
+
+
   return (
     <div className="Timers">
       <h2>Stopwatch</h2>
-      <div id="display">
+      {/* <div id="display">
         <span>{("0" + ~~((time / 60000) % 60)).slice(-2)}:</span>
         <span>{("0" + ~~((time / 1000) % 60)).slice(-2)}:</span>
         <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
-      </div>
+      </div> */}
+      <RenderWatchDisplay time={time}/>
 
       <div id="buttons">
         {!timerOn && time === 0 && (
