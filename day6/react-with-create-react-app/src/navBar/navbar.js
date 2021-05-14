@@ -14,7 +14,6 @@ function NavBar(props){
               })} 
                
            </ul>
-           <button onClick={clickMe}>click me!</button>
         </nav>
         </React.Fragment>
     )
