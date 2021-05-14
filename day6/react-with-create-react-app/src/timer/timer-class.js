@@ -7,21 +7,6 @@ export default class TimerClass extends Component {
         timerOn: false,
     }
 
-
-    // startTimer = () => {
-    //     this.setState(state => {
-    //       if (state.timerOn) {
-    //         clearInterval(this.timer);
-    //       } else {
-    //         this.timer = setInterval(() => {
-    //             this.setState((state) => ({
-    //                 time: state.time + 10
-    //               }));
-    //         });
-    //       }
-    //       return { timerOn: !state.timerOn };
-    //     });
-    //   };
     startTimer = () => {
         this.setState({
             timerOn: true,
