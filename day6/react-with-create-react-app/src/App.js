@@ -8,18 +8,18 @@ import NavBar from './navBar/navbar';
 import Timer from './timer/timer'
 import TimerClass from './timer/timer-class';
 import { List } from './list';
-import {StudentIdCard} from './student-id-card';
-import {ProductDisplayGrid} from './product-display-grid';
+import { StudentIdCard } from './student-id-card';
+import { ProductDisplayGrid } from './product-display-grid';
 import Form from './forms/form'
-import Table from './table/table'
+import Table, { RenderTableRow } from './table/table'
 
 function App() {
   const [productList, setProductList] = useState([]);
   useEffect(() => {
     axios.get('product-data.json').then(res => {
-        setProductList(res.data)
+      setProductList(res.data)
     })
-}, [])
+  }, [])
 
   return (
     <div className="App">
@@ -33,7 +33,7 @@ function App() {
       {/* <StudentIdCard /> */}
       {/* <ProductDisplayGrid /> */}
       {/* <Form /> */}
-      <Table key={Date.now()} productList={productList}/>
+      <Table key={Date.now()} productList={productList} />
     </div>
   );
 }
