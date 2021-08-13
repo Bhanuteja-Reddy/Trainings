@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const obj={};
+    const bhanuOb ={
+        userName:'bhanu',
+        getUserName:function(){
+            return this.userName;
+        }
+    }
+
+    function name(params) {
+        return this;
+    }
+    console.log(name(null));
+
+
+    const BhuvanByConstructer=new userConstructorMethod('Bhanu',['admin']);
+
+    
+    function userConstructorMethod(userName,roles){
+        this.userName = userName;
+        this.roles = userName;
+        
+    }
+
+
+    class User {
+        userName;
+        roles;
+        constructor(userName,roles){
+            this.userName = userName;
+            this.roles = userName;
+        }
+        method1(){
+
+        }
+        method2(){
+
+        }
+    }
+
+    const bhanu=new User('Bhanu',['admin']);
+    console.log(bhanu.roles);
+</script>
+</html>

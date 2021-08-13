@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let stringValue='';
+    stringValue = new String();
+
+    const newObj={};
+    const newObj1=new Object(null);
+    
+    
+    //logical 
+
+    const user = {
+        name:'Bhanu',
+        role:['admin'],
+        1:function (){
+
+        },
+        login:function (userName,Password){
+        //
+        },
+        logout:function (userName){
+        //
+        },
+       set createUsers (userName){
+            console.log('accessed from this keyword')
+            console.log(this.name)
+        //
+        },
+        "any Users":function (){
+
+        },
+        nestedArray:[
+            {
+                arrayObj:[
+                    {
+                        arr:[{}]
+                    }
+                ]
+            }
+        ]
+    }
+    user['aliasName']='rebats';
+
+    for(const userKeys in user){
+        console.log([userKeys]);
+    }
+    const keyOfObj=Object.keys(user);
+    const valuesObj=Object.values(user);
+
+    function userObj(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    const userObjectByCunstructorMethod=new userObj('Bhanu',23);
+
+    console.log(user.name)
+
+    const userClone=user;
+    
+    userClone.name='Cloned Bhanu';
+    console.log(user.name);
+    console.log(userClone.name)
+
+    user.createUsers='BhuvanNaidu';
+    const result= 100/100;
+    user[result];
+
+    let a;
+    addEventListener('click',()=>{
+        if(user.role.indexOf('admin') || user.name === 'Bhanu'){
+            printPdf();
+            return false;
+        }
+        })
+        a+=1;
+
+    
+    
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom access modify</title>
+    
+<script type="text/javascript">
+
+
+    console.log(document.title); //level 0
+    console.log(document.getElementsByTagName('title'));//level 1
+    console.log(document.querySelector('title'));//level 2
+
+
+    document.getElementsByTagName('title')[0].innerHTML = 'hello';//
+
+
+
+
+    //<![CDATA[
+    
+    window.onload=function() {
+
+
+        
+       const imgs = document.getElementsByTagName('img');
+       alert(imgs.length);
+       const p = document.createElement("p");
+       const img = document.createElement("img");
+       img.src="https://bhanutejareddy.netlify.app/bhanu_teja_reddy_profile_pic.jpg";
+       img.setAttribute('with','500px');
+       p.appendChild(img);
+    
+       const paras = document.getElementsByTagName('p');
+       alert(paras[0].parentNode.nodeName);
+       paras[0].parentNode.appendChild(p);
+    
+       alert(imgs.length);
+    }
+    //]]>
+    </script>
+</head>
+<body>
+
+    <p><img src="https://bhanutejareddy.netlify.app/bhanu_teja_reddy_profile_pic.jpg"
+        alt="Orchid from MBG 2009 orchid show" width="500px" height="500px"/></p>
+      
+    
+</body>
+    
+</html>

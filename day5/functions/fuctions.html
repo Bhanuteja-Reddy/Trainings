@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="functions">
+        Functions
+    </div>
+</body>
+
+<script src="lib1.js"></script>
+<script src="lib2.js"></script>
+<script>
+    var imageUrl = '';
+    
+    // function setTimeout(handler, timeout) {
+    //     var endDateTime = Date.now() + timeout;
+    //     var startDateTime = Date.now();
+    //     if (startDateTime < endDateTime) {
+    //         setTimeout(handler, startDateTime + 1);
+    //     } else {
+    //         handler.call(params);
+    //         break;
+    //     }
+
+    // }
+
+    function one(depFunc) {
+        console.log('function 1');
+        //i have user profile image url
+        //i will call server AND get data from server
+        setTimeout(function () {
+        imageUrl = 'image path';
+        depFunc(imageUrl);
+    }, 3000);
+    }
+    function dependentFunctionOfFuntion1(imageUrl) {
+        console.log(imageUrl);
+        console.log('dependentFunctionOfFuntion1');
+    }
+    one(dependentFunctionOfFuntion1);
+    console.log(add(1, 2));
+
+    const abc = () => {
+        this
+    };
+
+    abc();
+
+
+
+
+    (function IIFA(a, b) {
+        console.log('IIFA1');
+        console.log('a is' + a + 'b is' + b);
+    })(1, 2);
+
+    (() => {
+        console.log('IIFA2')
+    })();
+
+    const calc = calculator();
+    console.log(calc.add(1, 2));
+
+</script>
+
+</html>
