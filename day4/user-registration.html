@@ -182,6 +182,12 @@
             }
         }
     });
+    document.querySelector('#adharNumber').addEventListener('change', function (event) {
+        if (event.target.value && aadharNoRegEx.test(event.target.value) == false) {
+            alert('You have Entered in-correct input')
+            event.target.value = '';
+        }
+    });
 </script>
 
 </html>
