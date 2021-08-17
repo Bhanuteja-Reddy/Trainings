@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json and fetch</title>
+</head>
+
+<body>
+    <div id="resultTable"></div>
+</body>
+<script>
+
+    const string1 = "string1";
+    let string2 = string1;
+    string2 = 'string2';
+    console.log(string1);
+
+    const mobile = {
+        productName: "Apple IPhone",
+        model: "model 12",
+        basePrice: "1000",
+        uom: "rs",
+        uomMultiplicationFactor: 75,
+    };
+
+    const laptop = {
+        productName: "Apple Macbook",
+        model: "pro",
+        basePrice: "5000",
+        uom: "rs",
+        uomMultiplicationFactor: 75,
+    };
+
+
+
+    function getPrice(external) {
+        console.log(external)
+        console.log(this.basePrice * this.uomMultiplicationFactor);
+    }
+
+    getPrice.call(laptop, 'bhnau');
+
+    console.log(Object.call(getPrice, mobile));
+
+
+    Object.freeze(mobile);
+
+    const objectClone = mobile;
+    objectClone.key1 = "variable change by ref";
+    console.log(mobile);
+
+    const func1 = function () {
+
+    }
+
+fetch('https://ghibliapi.herokuapp.com/films')
+    .then(data => {
+        return data.json();
+    })
+    .then(films => {
+        getDynamicTable(films);
+    });
+
+
+
+    function getDynamicTable(films) {
+        const tbl = document.createElement('table');
+        const tblHead = document.createElement('thead');
+        const tblBody = document.createElement('tbody');
+
+        const tableHeadRow = document.createElement('tr');
+        Object.keys(films[0]).forEach((key) => {
+            if (key === 'coursesEnrolled') {
+                const theadCel = document.createElement('th')
+                const cellText = document.createTextNode(key);
+                theadCel.appendChild(cellText);
+                tableHeadRow.appendChild(theadCel)
+                console.log();
+            } else {
+                const theadCel = document.createElement('th')
+                const cellText = document.createTextNode(key);
+                theadCel.appendChild(cellText);
+                tableHeadRow.appendChild(theadCel)
+            }
+        });
+
+        // creating all cells
+        films.forEach((studentsData) => {
+            // creates a table row
+            const row = document.createElement('tr');
+
+            for (let studentKey in studentsData) {
+                // Create a <td> element and a text node, make the text
+                // node the contents of the <td>, and put the <td> at
+                // the end of the table row
+                const cell = document.createElement('td');
+                const cellText = document.createTextNode(studentsData[studentKey]);
+                cell.appendChild(cellText);
+                row.appendChild(cell);
+            }
+
+            // add the row to the end of the table body
+            tblBody.appendChild(row);
+        });
+
+        // put the <thead> and <tbody> in the <table>
+        tbl.appendChild(tableHeadRow);
+        tbl.appendChild(tblBody);
+        // sets the border attribute of tbl to 2;
+        tbl.setAttribute("border", "2");
+
+
+
+        // const ul = document.createElement('ul');
+        // studentsDataArray.forEach(user => {
+        //     let listItem = document.createElement('li');
+        //     let textNode = document.createTextNode(`${user.fname} ${user.lname}`);
+        //     listItem.appendChild(textNode);
+        //     ul.appendChild(listItem);
+        // });
+        document.querySelector('#resultTable').innerHTML = "";
+        document.querySelector('#resultTable').appendChild(tbl);
+    }
+</script>
+
+</html>
