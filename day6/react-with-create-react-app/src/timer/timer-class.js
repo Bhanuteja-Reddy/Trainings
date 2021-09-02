@@ -6,7 +6,6 @@ export default class TimerClass extends Component {
         time: 0,
         timerOn: false,
     }
-
     startTimer = () => {
         this.setState({
             timerOn: true,

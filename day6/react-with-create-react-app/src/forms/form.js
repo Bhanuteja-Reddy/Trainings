@@ -1,25 +1,47 @@
 import React, { useState } from 'react';
 
-export const Form = () => {
+export const Form = (props) => {
     const [formData, setFormData] = useState({});
+    const {submitRegistrationData} = props;
 
     const texNameHandler = (event) => {
-        const key=event.target.name;
-        const value=event.target.value;
-        setFormData({...formData,key:value});
+        setFormData({
+            ...formData,
+            [event.target.name] : event.target.value
+        });
     }
-    
-    const handleSubmit=(event)=>{
-        event.preventDefault();
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        submitRegistrationData(formData);
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <lable>Enter Your Name</lable>
-            <input type="text" onChange={texNameHandler} value={formData.name} name="name"/>
-            <input type="number" onChange={texNameHandler} value={formData.age} name="age"/>
-            <input type="submit" />
-        </form>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <form action="#" onSubmit={handleSubmit}>
+                <label for="fname">User Name:</label><br />
+                <input type="text" onChange={texNameHandler} className="capital-letters" id="fname" name="fname" /><br />
+                <label for="lname">Last Name:</label><br />
+                <input type="text" onChange={texNameHandler} className="capital-letters" id="lname" name="lname" /><br />
+                <label for="fatherName">Father Name:</label><br />
+                <input type="text" onChange={texNameHandler} className="capital-letters" id="fatherName" name="fatherName" /><br />
+                <label for="motherName">Mother name:</label><br />
+                <input type="text" onChange={texNameHandler} className="capital-letters" id="motherName" name="motherName" /><br />
+                <label for="phoneNumber">Phone Number:</label><br />
+                <input type="text" onChange={texNameHandler} id="phoneNumber" name="phoneNumber" /><br />
+                <label for="adharNumber">AdharNumber:</label><br />
+                <input type="text" onChange={texNameHandler} id="adharNumber" name="adharNumber" /><br />
+                <label for="coursesEnrolled">Select course:</label><br />
+                <select name="coursesEnrolled" onChange={texNameHandler} id="coursesEnrolled">
+                    <option value="">Please Select</option>
+                    <option value="MERN">MERN</option>
+                    <option value="MEAN">MEAN</option>
+                    <option value="REACT">REACT</option>
+                    <option value="ANGULAR">ANGULAR</option>
+                </select><br /><br />
+                <input type="submit" value="Submit" />
+            </form>
+            <br />
+        </div>
     )
 }
 export default Form;

@@ -14,13 +14,9 @@ const RenderTdSymbols=(element)=>{
 export const RenderTableRow = (props) => {
     return (
         <tr>
-            <td>{props.productData.productId}</td>
-            <td>{props.productData.productMasterCategory}</td>
-            <td>{props.productData.productSubCategory}</td>
-            <td>{props.productData.productName}</td>
-            <td>{props.productData.price}</td>
-            <td>{props.productData.discount}</td>
-            <td>{props.productData.price - ((props.productData.price * props.productData.discount) / 100)}</td>
+            {Object.values(props.productData??{}).map((data)=>
+                <td>{data}</td>
+            )}
         </tr>
     )
 }
@@ -37,24 +33,16 @@ export const Table = (props) => {
         newArra.push(<li>{ele}</li>)
     })
 
-
-    
-
-
-
-
-
-
     return (
         <>
-        <table border="1px solid black">
-            <th>ID</th>
-            <th>productMasterCategory</th>
-            <th>productSubCategory</th>
-            <th>productName</th>
-            <th>price</th>
-            <th>discount</th>
-            <th>Price after Discount</th>
+        <table key={Date.now()} border="1px solid black">
+            {
+                Object.keys(props.productList[props.productList.length-1]??{})
+                .map((val)=>
+                    <th>{val}</th>
+                )
+            }
+            
             {props.productList.map(productData => {
                 return RenderTdSymbols(<RenderTableRow productData={productData} key={Date.now()}/>)
             })}
