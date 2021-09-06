@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
+import DynmicSelect from './dynmic-select'
 
 export const Form = (props) => {
     const [formData, setFormData] = useState({});
-    const {submitRegistrationData} = props;
+    const { submitRegistrationData } = props;
 
     const texNameHandler = (event) => {
         setFormData({
             ...formData,
-            [event.target.name] : event.target.value
+            [event.target.name]: event.target.value
         });
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         submitRegistrationData(formData);
+        const form = document.querySelector("form");
+        form.reset();
+    }
+
+    const renderDynamicSelect = (noOfSelects) => {
+        let increment=0;
+      return [...Array(Number(noOfSelects)).fill(0)].map((elem)=>{
+          increment=increment+1;
+        return <DynmicSelect serial={increment} />
+      })
     }
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -38,6 +49,11 @@ export const Form = (props) => {
                     <option value="REACT">REACT</option>
                     <option value="ANGULAR">ANGULAR</option>
                 </select><br /><br />
+                <label for="noOfInputs">No of Dynamic inputs:</label><br />
+                <input type="text" onChange={texNameHandler} id="noOfInputs" name="noOfInputs" /><br />
+                {
+                    formData.noOfInputs ? renderDynamicSelect(formData.noOfInputs) : <></>
+                }
                 <input type="submit" value="Submit" />
             </form>
             <br />

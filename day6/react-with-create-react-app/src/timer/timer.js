@@ -1,5 +1,6 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react';
-import {RenderWatchDisplay} from './timer-display'
+import {RenderWatchDisplay} from './timer-display';
 import './timer.css'
 
 const Timer = () => {
@@ -19,6 +20,17 @@ const Timer = () => {
 
     return () => clearInterval(interval);
   }, [timerOn]);
+
+  useEffect(() => {
+    fetchData()
+  }, []);
+
+
+  const fetchData=()=>{
+    axios.get('list.json').then(res=>{
+      console.log(res)
+    })
+  }
 
   
 

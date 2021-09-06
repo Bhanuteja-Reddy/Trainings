@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
-import Form from './forms/form'
-import Table, { RenderTableRow } from './table/table'
+import Form from './forms/form';
+import Table from './table/table';
 
 const CrudComponent = () => {
     const [registrationData, setRegistrationData] = useState([]);
@@ -13,9 +13,11 @@ const CrudComponent = () => {
     return (
         <div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Form submitRegistrationData={submitRegistrationData} /></div>
+                <Form submitRegistrationData={submitRegistrationData} abc={'1'} a={'1'} b={'1'} c={'1'} />
+            </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Table key={Date.now()} productList={registrationData} /></div>
+                <Table productList={registrationData} />
+            </div>
         </div>
     )
 }
